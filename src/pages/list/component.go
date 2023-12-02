@@ -108,12 +108,12 @@ func (c *Component) Update(msg tea.Msg) tea.Cmd {
 		switch {
 		case key.Matches(msg, c.model.delegateKeys.markAsDone):
 			if c.model.list.SelectedItem() != nil {
-				return toggleTaskDone(c)
+				cmds = append(cmds, toggleTaskDone(c))
 			}
 
 		case key.Matches(msg, c.model.delegateKeys.remove):
 			if c.model.list.SelectedItem() != nil {
-				return performTaskDelete(c)
+				cmds = append(cmds, performTaskDelete(c))
 			}
 
 		case key.Matches(msg, c.model.delegateKeys.edit):
